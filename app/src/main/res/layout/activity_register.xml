@@ -81,7 +81,8 @@
             <EditText android:id="@+id/editTextPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Phone number"/>
+                android:hint="Phone number"
+                android:inputType="phone" />
         </android.support.design.widget.TextInputLayout>
 
     <LinearLayout
