@@ -1,5 +1,6 @@
 package com.example.yara.cattlemonitor;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,14 @@ public class LoginActivity extends AppCompatActivity {
 
         initializeViews();
 
+        registerLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(i);
+
+            }
+        });
     }
 
     public void initializeViews ()
