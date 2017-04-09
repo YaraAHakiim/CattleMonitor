@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "576797131942",
+    "firebase_url": "https://cow-monitor-3417a.firebaseio.com",
+    "project_id": "cow-monitor-3417a",
+    "storage_bucket": "cow-monitor-3417a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576797131942:android:30fdd67032b29b3c",
+        "android_client_info": {
+          "package_name": "com.example.yara.cattlemonitor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "576797131942-jnk9p6kn8mb2j1cr67qha2rk0tb2qovc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByeKGRLPzlZdRZmuQwoCQ2f6pBXPFS8bA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

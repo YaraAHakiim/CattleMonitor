@@ -85,43 +85,18 @@
                 android:inputType="phone" />
         </android.support.design.widget.TextInputLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="25dp"
-            android:text="اسم مزرعة"
-            android:textSize="20sp"
-            android:layout_weight="2"/>
-
-        <Spinner
-            android:id="@+id/spinnerFarmName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="25dp"
-            android:layout_weight="1"></Spinner>
-        </LinearLayout>
-
-
 
         <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_signup"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/colorPrimaryDark"
             android:padding="12dp"
             android:text="إضافه موظف"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@color/black_overlay"/>
+            android:textColor="@color/black_overlay" />
 
     </LinearLayout>
 </ScrollView>
