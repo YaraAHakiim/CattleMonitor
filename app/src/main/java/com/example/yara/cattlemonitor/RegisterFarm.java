@@ -14,51 +14,37 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-public class AddUserActivity extends AppCompatActivity implements View.OnClickListener {
+public class RegisterFarm extends AppCompatActivity implements View.OnClickListener {
 
     EditText editTextName ;
     EditText editTextEmail ;
     EditText editTextPassword ;
     EditText editTextConfirmPassword ;
     EditText editTextPhoneNumber ;
-    AppCompatButton register;
+    EditText editTextFarmName ;
+    EditText editTextFarmAddress ;
+    EditText editTextNumberOfNodes ;
 
     User user;
-
+    Farm farm;
 
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
+
     private ProgressDialog progressDialog;
+    AppCompatButton register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adduser);
+        setContentView(R.layout.activity_register_farm);
 
         initializeViews();
     }
 
-    public void registerUser()
-    {
-        firebaseAuth = FirebaseAuth.getInstance();
-
-        if(validate()) {
-
-            progressDialog.setMessage("Registering Please Wait...");
-            progressDialog.show();
-
-            firebaseAuth.createUserWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful())
-                                Toast.makeText(getApplicationContext(), "Registered", Toast.LENGTH_LONG).show();
-                            else if (!task.isSuccessful())
-                                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
-                        }
-                    });
-        }
-    }
 
     public void initializeViews()
     {
@@ -67,15 +53,13 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
         editTextPassword =(EditText) findViewById(R.id.editTextPassword);
         editTextConfirmPassword =(EditText) findViewById(R.id.editTextConfirmPassword);
         editTextPhoneNumber =(EditText) findViewById(R.id.editTextPhoneNumber);
+        editTextFarmName =(EditText) findViewById(R.id.editTextFarmName);
+        editTextFarmAddress =(EditText) findViewById(R.id.editTextFarmAddress);
+        editTextNumberOfNodes =(EditText) findViewById(R.id.editTextNumberOfNodes);
 
         register = (AppCompatButton) findViewById(R.id.btn_signup);
         register.setOnClickListener(this);
         progressDialog = new ProgressDialog(this);
-    }
-
-    public void fillUserInfo()
-    {
-        user = new User();
     }
 
     boolean validate ()
@@ -122,20 +106,61 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
             isValid = false;
         }
 
-
-
         return isValid;
     }
 
+    public void registerUser()
+    {
+        firebaseAuth = FirebaseAuth.getInstance();
 
+        if(validate()) {
 
+            progressDialog.setMessage("Registering Please Wait...");
+            progressDialog.show();
 
+            firebaseAuth.createUserWithEmailAndPassword(editTextEmail.getText().toString(), editTextPassword.getText().toString())
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(), "Registered", Toast.LENGTH_LONG).show();
+                                fillFarmInfo();
+                                fillUserInfo();
+                            }
+                            else if (!task.isSuccessful())
+                                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                            progressDialog.hide();
+                        }
+                    });
+        }
+    }
+
+    public void fillFarmInfo ()
+    {
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        farm = new Farm(editTextFarmName.getText().toString() , editTextFarmAddress.getText().toString() ,
+                Integer.parseInt(editTextNumberOfNodes.getText().toString())) ;
+
+        databaseReference.child("Farms").child(editTextFarmName.getText().toString()).setValue(farm);
+    }
+
+    public void fillUserInfo()
+    {
+        String name = editTextName.getText().toString();
+        String email = editTextEmail.getText().toString();
+        String farmName = editTextFarmName.getText().toString();
+        String phoneNumber = editTextPhoneNumber.getText().toString();
+        String userId = firebaseAuth.getCurrentUser().getUid() ;
+
+        user = new User(name,email,phoneNumber,farmName,"manager");
+
+        databaseReference.child("Users").child(userId).setValue(user);
+    }
 
     @Override
     public void onClick(View view) {
         //calling register method on click
         registerUser();
     }
-
-
 }
