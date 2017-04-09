@@ -15,7 +15,7 @@ public class LoginActivity extends AppCompatActivity {
     AppCompatButton btnLogin;
     EditText editTextEmail;
     EditText editTextPassword;
-    TextView registerLink;
+
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
         initializeViews();
 
-        registerLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
-                startActivity(i);
 
-            }
-        });
     }
 
     public void initializeViews ()
@@ -39,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin =(AppCompatButton) findViewById(R.id.btnLogin);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        registerLink = (TextView) findViewById(R.id.registerLink);
     }
 
 

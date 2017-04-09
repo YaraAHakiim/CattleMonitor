@@ -2,11 +2,9 @@ package com.example.yara.cattlemonitor;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Patterns;
 import android.widget.EditText;
-public class RegisterActivity extends AppCompatActivity {
+public class AddUserActivity extends AppCompatActivity {
 
     EditText editTextName ;
     EditText editTextEmail ;
@@ -17,7 +15,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_adduser);
 
         initializeViews();
 
