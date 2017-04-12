@@ -73,10 +73,7 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
         progressDialog = new ProgressDialog(this);
     }
 
-    public void fillUserInfo()
-    {
-        user = new User();
-    }
+
 
     boolean validate ()
     {
@@ -128,7 +125,10 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
     }
 
 
-
+    public void fillUserInfo()
+    {
+        user = new User();
+    }
 
 
     @Override
