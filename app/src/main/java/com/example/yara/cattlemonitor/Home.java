@@ -1,5 +1,6 @@
 package com.example.yara.cattlemonitor;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,6 +35,11 @@ public class Home extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        /*SharedPreferences sharedPreferences = getSharedPreferences("Login session" , 0);
+        String uId = sharedPreferences.getString("Logged in user id" , null) ;
+
+        Toast.makeText(this,uId,Toast.LENGTH_LONG).show();*/
     }
 
     @Override
@@ -94,6 +101,12 @@ public class Home extends AppCompatActivity
         }
         else if (id == R.id.nav_farmProfile)
         {
+            FarmProfileFragment homePageFragment = new FarmProfileFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.layoutForFragement,
+                    homePageFragment ,
+                    homePageFragment.getTag())
+                    .commit();
 
         }
         else if (id == R.id.nav_userProfile) {

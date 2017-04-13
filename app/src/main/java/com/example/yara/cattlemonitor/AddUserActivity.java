@@ -57,6 +57,7 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
                                 Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
                         }
                     });
+            progressDialog.hide();
         }
     }
 
@@ -127,7 +128,9 @@ public class AddUserActivity extends AppCompatActivity implements View.OnClickLi
 
     public void fillUserInfo()
     {
-        user = new User();
+        String name = editTextName.getText().toString() ;
+        String email = editTextEmail.getText().toString();
+
     }
 
 
