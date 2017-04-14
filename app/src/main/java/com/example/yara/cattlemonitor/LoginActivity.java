@@ -38,6 +38,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         initializeViews();
 
 
+
+
     }
 
     public void initializeViews ()
@@ -84,7 +86,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         SharedPreferences preferences =  getApplicationContext().getSharedPreferences("Login session" , 0);
         SharedPreferences.Editor editor = preferences.edit();
 
-        editor.putString("Logged in user id" , userId);
+        editor.putString("Current user id" , userId);
         editor.commit();
     }
 

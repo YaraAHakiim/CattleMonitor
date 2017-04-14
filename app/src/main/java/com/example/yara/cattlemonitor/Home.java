@@ -1,5 +1,6 @@
 package com.example.yara.cattlemonitor;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -35,11 +36,7 @@ public class Home extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        /*SharedPreferences sharedPreferences = getSharedPreferences("Login session" , 0);
-        String uId = sharedPreferences.getString("Logged in user id" , null) ;
-
-        Toast.makeText(this,uId,Toast.LENGTH_LONG).show();*/
+        
     }
 
     @Override
@@ -69,6 +66,17 @@ public class Home extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        else if (id == R.id.action_logout)
+        {
+            SharedPreferences preferences = getSharedPreferences("Login session" , 0);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.remove("Current user id");
+            editor.commit();
+
+            Intent intent = new Intent(getApplicationContext() , LoginActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
