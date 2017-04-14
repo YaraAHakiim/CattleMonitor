@@ -25,11 +25,18 @@ public class FarmProfileFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
+        View rootView = inflater.inflate(R.layout.fragment_farm_profile , container , false) ;
 
+        tabHost = new FragmentTabHost(getActivity());
+        tabHost.setup(getActivity(), getChildFragmentManager(), R.id.farmProfileFragmentLayout);
 
-        return inflater.inflate(R.layout.fragment_farm_profile , container , false) ;
+        tabHost.addTab(tabHost.newTabSpec("test").setIndicator("test") , FarmInfoFragment.class , null);
+        tabHost.addTab(tabHost.newTabSpec("test2").setIndicator("test2") , HomePageFragment.class , null);
+
+        return tabHost;
+
     }
 
 }

@@ -36,7 +36,7 @@ public class Home extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        
+
     }
 
     @Override
@@ -109,11 +109,11 @@ public class Home extends AppCompatActivity
         }
         else if (id == R.id.nav_farmProfile)
         {
-            FarmProfileFragment homePageFragment = new FarmProfileFragment();
+            FarmProfileFragment farmProfileFragment = new FarmProfileFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.layoutForFragement,
-                    homePageFragment ,
-                    homePageFragment.getTag())
+                    farmProfileFragment ,
+                    farmProfileFragment.getTag())
                     .commit();
 
         }
