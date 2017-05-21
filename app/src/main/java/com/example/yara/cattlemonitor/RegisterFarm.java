@@ -153,7 +153,7 @@ public class RegisterFarm extends AppCompatActivity implements View.OnClickListe
         String phoneNumber = editTextPhoneNumber.getText().toString();
         String userId = firebaseAuth.getCurrentUser().getUid() ;
 
-        user = new User(name,email,phoneNumber,farmName,"manager");
+        user = new User(name,email,phoneNumber,farmName,"Manager");
 
         databaseReference.child("Users").child(userId).setValue(user);
     }

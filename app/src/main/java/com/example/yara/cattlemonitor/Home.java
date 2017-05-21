@@ -109,12 +109,8 @@ public class Home extends AppCompatActivity
         }
         else if (id == R.id.nav_farmProfile)
         {
-            FarmProfileFragment farmProfileFragment = new FarmProfileFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.layoutForFragement,
-                    farmProfileFragment ,
-                    farmProfileFragment.getTag())
-                    .commit();
+            Intent intent = new Intent(this ,FarmInfo.class) ;
+            startActivity(intent);
 
         }
         else if (id == R.id.nav_userProfile) {

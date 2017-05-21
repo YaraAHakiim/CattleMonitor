@@ -27,6 +27,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText editTextEmail;
     EditText editTextPassword;
 
+    //TODO change this
+    TextView link ;
+
     FirebaseAuth firebaseAuth ;
 
     
@@ -36,10 +39,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         initializeViews();
-
-
-
-
     }
 
     public void initializeViews ()
@@ -47,8 +46,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin =(AppCompatButton) findViewById(R.id.btnLogin);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        link = (TextView) findViewById(R.id.link_signup) ;
 
         btnLogin.setOnClickListener(this);
+        link.setOnClickListener(this);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
     }
@@ -94,6 +96,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        userLogin();
+        if (v == btnLogin)
+            userLogin();
+        else if (v == link)
+        {
+            Intent intent = new Intent(getApplicationContext() , RegisterFarm.class);
+            startActivity(intent);
+        }
     }
 }
